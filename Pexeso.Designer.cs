@@ -49,6 +49,7 @@
             Vyber = new GroupBox();
             Reset = new Button();
             Close = new Button();
+            otoceni = new System.Windows.Forms.Timer(components);
             Vyber.SuspendLayout();
             SuspendLayout();
             // 
@@ -301,6 +302,11 @@
             Close.UseWaitCursor = true;
             Close.Click += Close_Click;
             // 
+            // otoceni
+            // 
+            otoceni.Interval = 1000;
+            otoceni.Tick += otoceni_Tick;
+            // 
             // Pexeso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -353,5 +359,6 @@
         private GroupBox Vyber;
         private Button Close;
         private Button Reset;
+        private System.Windows.Forms.Timer otoceni;
     }
 }

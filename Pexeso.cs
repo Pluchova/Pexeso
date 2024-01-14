@@ -38,7 +38,7 @@ namespace Pexeso
             // pøetypování na button
             Button button = (Button)sender;
 
-            zkontroluj_viteze();
+
 
             //když je na tlaèítko kliknuté provede se:
             if (button != null)
@@ -54,12 +54,15 @@ namespace Pexeso
                     return;
                 }
                 // druhé tlaèítko
+
                 if (druheStisknuteTlacitko == null)
                 {
                     druheStisknuteTlacitko = button;
                     druheStisknuteTlacitko.ForeColor = Color.Black;
-                    return;
                 }
+
+
+
                 //poèítání tahù
                 _pocetTahu++;
                 casovac.Start();
@@ -75,17 +78,12 @@ namespace Pexeso
                     }
 
                     else
-                    {  // obnoví se pùvodní barva když se nerovnají
+                    {
                         _soundPlayer_spatne.Play();
-                        prvniStisknuteTlacitko.ForeColor = prvniStisknuteTlacitko.BackColor;
-                        druheStisknuteTlacitko.ForeColor = druheStisknuteTlacitko.BackColor;
-
+                        otoceni.Start();
                     }
 
-                    //reset promìnných 
-                    prvniStisknuteTlacitko = null;
-                    druheStisknuteTlacitko = null;
-
+                    zkontroluj_viteze();
                 }
             }
 
@@ -145,13 +143,26 @@ namespace Pexeso
             foreach (Button button in Controls.OfType<Button>())
             {
                 button.ForeColor = button.BackColor;
-                prvniStisknuteTlacitko = null;
-                druheStisknuteTlacitko = null;
-                _pocetTahu = 1;
-                Close.Enabled = false;
-                Reset.Enabled = false;
-                _cas = 0;
+
             }
+            prvniStisknuteTlacitko = null;
+            druheStisknuteTlacitko = null;
+            _pocetTahu = 1;
+            Close.Enabled = false;
+            Reset.Enabled = false;
+            _cas = 0;
+        }
+        private void otoceni_Tick(object sender, EventArgs e)
+        {
+            otoceni.Stop();
+            prvniStisknuteTlacitko.ForeColor = prvniStisknuteTlacitko.BackColor;
+            druheStisknuteTlacitko.ForeColor = druheStisknuteTlacitko.BackColor;
+
+
+            prvniStisknuteTlacitko = null;
+            druheStisknuteTlacitko = null;
+
+
         }
     }
 }
