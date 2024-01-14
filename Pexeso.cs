@@ -96,15 +96,18 @@ namespace Pexeso
             {
                 if (button.ForeColor != Color.Black)
                 {
-                    Console.WriteLine("Tlaèítko není èerné: " + button.Text);
+
                     return; // Pokud alespoò jedno tlaèítko není èerné, není výhra
                 }
             }
             //zastaví se èasovaè a vypíše se hláška
             casovac.Stop();
             _soundPlayer_vyhra.Play();
+            Close.Enabled = true;
+            Reset.Enabled = true;
+
             MessageBox.Show($"Vyhrál jsi za {_cas} sekund, za použití {_pocetTahu} tahù.");
-            Close();
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -132,6 +135,23 @@ namespace Pexeso
             }
         }
 
+        private void Close_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            foreach (Button button in Controls.OfType<Button>())
+            {
+                button.ForeColor = button.BackColor;
+                prvniStisknuteTlacitko = null;
+                druheStisknuteTlacitko = null;
+                _pocetTahu = 1;
+                Close.Enabled = false;
+                Reset.Enabled = false;
+                _cas = 0;
+            }
+        }
     }
 }

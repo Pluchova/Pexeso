@@ -46,6 +46,10 @@
             button15 = new Button();
             button16 = new Button();
             casovac = new System.Windows.Forms.Timer(components);
+            Vyber = new GroupBox();
+            Reset = new Button();
+            Close = new Button();
+            Vyber.SuspendLayout();
             SuspendLayout();
             // 
             // button1
@@ -262,11 +266,47 @@
             casovac.Interval = 1000;
             casovac.Tick += timer1_Tick;
             // 
+            // Vyber
+            // 
+            Vyber.Controls.Add(Reset);
+            Vyber.Controls.Add(Close);
+            Vyber.Location = new Point(19, 414);
+            Vyber.Name = "Vyber";
+            Vyber.Size = new Size(359, 44);
+            Vyber.TabIndex = 16;
+            Vyber.TabStop = false;
+            Vyber.UseWaitCursor = true;
+            // 
+            // Reset
+            // 
+            Reset.Enabled = false;
+            Reset.Location = new Point(179, 14);
+            Reset.Name = "Reset";
+            Reset.Size = new Size(75, 23);
+            Reset.TabIndex = 1;
+            Reset.Text = "Reset";
+            Reset.UseVisualStyleBackColor = true;
+            Reset.UseWaitCursor = true;
+            Reset.Click += Reset_Click;
+            // 
+            // Close
+            // 
+            Close.Enabled = false;
+            Close.Location = new Point(14, 15);
+            Close.Name = "Close";
+            Close.Size = new Size(75, 23);
+            Close.TabIndex = 0;
+            Close.Text = "Zavřít";
+            Close.UseVisualStyleBackColor = true;
+            Close.UseWaitCursor = true;
+            Close.Click += Close_Click;
+            // 
             // Pexeso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(426, 405);
+            ClientSize = new Size(472, 470);
+            Controls.Add(Vyber);
             Controls.Add(button16);
             Controls.Add(button15);
             Controls.Add(button14);
@@ -287,6 +327,7 @@
             Name = "Pexeso";
             StartPosition = FormStartPosition.Manual;
             Text = "Pexeso";
+            Vyber.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -309,5 +350,8 @@
         private Button button15;
         private Button button16;
         private System.Windows.Forms.Timer casovac;
+        private GroupBox Vyber;
+        private Button Close;
+        private Button Reset;
     }
 }
