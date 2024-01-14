@@ -1,3 +1,5 @@
+using System.Media;
+
 namespace Pexeso
 {
     public partial class Pexeso : Form
@@ -6,9 +8,16 @@ namespace Pexeso
         public Button druheStisknuteTlacitko;
         private int _cas;
         private int _pocetTahu = 1;
+        private SoundPlayer _soundPlayer_vyhra;
+        private SoundPlayer _soundPlayer_dobre;
+        private SoundPlayer _soundPlayer_spatne;
         public Pexeso()
         {
             InitializeComponent();
+
+            _soundPlayer_vyhra = new SoundPlayer(Properties.Resources.tadaa_47995);
+            _soundPlayer_dobre = new SoundPlayer(Properties.Resources.success_1_6297);
+            _soundPlayer_spatne = new SoundPlayer(Properties.Resources.negative_beeps_6008);
             Button[] buttons = new Button[16];
             int i = 0;
 
@@ -59,15 +68,17 @@ namespace Pexeso
                 {   // rovnají se - resetují se hodnoty
                     if (prvniStisknuteTlacitko.Text == druheStisknuteTlacitko.Text)
                     {
+                        _soundPlayer_dobre.Play();
                         prvniStisknuteTlacitko = null;
                         druheStisknuteTlacitko = null;
 
                     }
+
                     else
                     {  // obnoví se pùvodní barva když se nerovnají
+                        _soundPlayer_spatne.Play();
                         prvniStisknuteTlacitko.ForeColor = prvniStisknuteTlacitko.BackColor;
                         druheStisknuteTlacitko.ForeColor = druheStisknuteTlacitko.BackColor;
-
 
                     }
 
@@ -91,6 +102,7 @@ namespace Pexeso
             }
             //zastaví se èasovaè a vypíše se hláška
             casovac.Stop();
+            _soundPlayer_vyhra.Play();
             MessageBox.Show($"Vyhrál jsi za {_cas} sekund, za použití {_pocetTahu} tahù.");
             Close();
         }

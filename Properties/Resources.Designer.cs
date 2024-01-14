@@ -59,5 +59,32 @@ namespace Pexeso.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream negative_beeps_6008 {
+            get {
+                return ResourceManager.GetStream("negative_beeps_6008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream success_1_6297 {
+            get {
+                return ResourceManager.GetStream("success_1_6297", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream tadaa_47995 {
+            get {
+                return ResourceManager.GetStream("tadaa_47995", resourceCulture);
+            }
+        }
     }
 }
