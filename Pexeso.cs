@@ -139,7 +139,7 @@ namespace Pexeso
         }
 
         private void Reset_Click(object sender, EventArgs e)
-        {
+        {  
             foreach (Button button in Controls.OfType<Button>())
             {
                 button.ForeColor = button.BackColor;
@@ -148,9 +148,24 @@ namespace Pexeso
             prvniStisknuteTlacitko = null;
             druheStisknuteTlacitko = null;
             _pocetTahu = 1;
+            
             Close.Enabled = false;
             Reset.Enabled = false;
             _cas = 0;
+            Button[] buttons = new Button[16];
+            int i = 0;
+
+            foreach (Control c in this.Controls)
+            {
+                if (c is Button)
+                {
+                    buttons[i] = c as Button;
+                    i++;
+                }
+            }
+
+            zamichej(buttons);
+
         }
         private void otoceni_Tick(object sender, EventArgs e)
         {
